@@ -13,6 +13,13 @@ class UserViewModel(
     private var _users: MutableLiveData<List<User>> = MutableLiveData()
     val users: LiveData<List<User>> get() = _users
 
+
+    init {
+        getAllUsers()
+    }
+
+
+
     fun insertUser(user: User) {
         viewModelScope.launch(Dispatchers.IO) {
             userRepository.addUser(user)
